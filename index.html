@@ -47,14 +47,14 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Emergency Micro-Lending in Trusted Circles</h1>
-                <p class="hero-subtitle">Borrow for urgent needs from people you know. Lend to your community and earn <strong>15% weekly interest</strong>. Join via referral only.</p>
+                <p class="hero-subtitle">Borrow now at a lower interest for urgent needs from a group of people you know. create group and Lend to your community and earn <strong>15% weekly interest</strong>. Join now.</p>
                 <div class="hero-stats">
                     <div class="stat">
                         <span class="stat-number">10,000+</span>
                         <span class="stat-label">Active Groups</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">₵1.2B+</span>
+                        <span class="stat-number">KSH1.2B+</span>
                         <span class="stat-label">Total Lent</span>
                     </div>
                     <div class="stat">
@@ -89,22 +89,22 @@
                 <div class="category-card floating">
                     <div class="category-icon">📱</div>
                     <h3>PesewaData</h3>
-                    <p>Stay connected—borrow for internet/airtime.</p>
+                    <p>Stay connected—borrow for internet/wifi.</p>
                 </div>
                 <div class="category-card floating">
                     <div class="category-icon">🔥</div>
                     <h3>PesewaCookingGas</h3>
-                    <p>Cook with confidence—borrow when gas is low.</p>
+                    <p>Cook with confidence—borrow when Cooking gas is low/finished.</p>
                 </div>
                 <div class="category-card floating">
                     <div class="category-icon">🍲</div>
                     <h3>PesewaFood</h3>
-                    <p>Don't sleep hungry—borrow and eat today.</p>
+                    <p>Don't sleep/work while hungry—borrow and eat today.</p>
                 </div>
                 <div class="category-card floating">
-                    <div class="category-icon">🔧</div>
-                    <h3>Pesewacredo</h3>
-                    <p>Fix it fast—borrow for urgent repairs/tools.</p>
+                    <div class="category-icon">📱</div>
+                    <h3>Pesewacredit/airtime</h3>
+                    <p>Dont be stranded or miss an important call.</p>
                 </div>
                 <div class="category-card floating">
                     <div class="category-icon">💧</div>
@@ -285,9 +285,9 @@
                             <label for="lTier">Subscription Tier *</label>
                             <select id="lTier" required>
                                 <option value="">Select Tier</option>
-                                <option value="basic">Basic (≤₵1,500/week) - ₵50/month</option>
-                                <option value="premium">Premium (≤₵5,000/week) - ₵250/month</option>
-                                <option value="super">Super (≤₵20,000/week) - ₵1,000/month</option>
+                                <option value="basic">Basic (≤KSH1,500/week) - KSH50/month</option>
+                                <option value="premium">Premium (≤KSH5,000/week) - KSH250/month</option>
+                                <option value="super">Super (≤KSH20,000/week) - KSH1,000/month</option>
                             </select>
                             <div class="tier-details" id="tierDetails">
                                 <!-- Tier details will be shown here -->
@@ -301,7 +301,7 @@
                                 <label><input type="checkbox" name="lCategories" value="data"> PesewaData</label>
                                 <label><input type="checkbox" name="lCategories" value="gas"> PesewaCookingGas</label>
                                 <label><input type="checkbox" name="lCategories" value="food"> PesewaFood</label>
-                                <label><input type="checkbox" name="lCategories" value="repairs"> Pesewacredo</label>
+                                <label><input type="checkbox" name="lCategories" value="repairs"> Pesewacredit</label>
                                 <label><input type="checkbox" name="lCategories" value="water"> PesewaWaterBill</label>
                                 <label><input type="checkbox" name="lCategories" value="fuel"> PesewaBikeCarTuktukFuel</label>
                                 <label><input type="checkbox" name="lCategories" value="repair"> PesewaBikeCarTuktukRepair</label>
@@ -326,11 +326,11 @@
             <div class="calculator">
                 <div class="calculator-inputs">
                     <div class="form-group">
-                        <label for="loanAmount">Loan Amount (₵)</label>
+                        <label for="loanAmount">Loan Amount (KSH)</label>
                         <input type="range" id="loanAmount" min="5" max="20000" value="1000" step="5">
                         <div class="range-display">
-                            <span id="amountValue">₵1,000</span>
-                            <small>Max: ₵20,000 (Super Tier)</small>
+                            <span id="amountValue">KSH1,000</span>
+                            <small>Max: KSH20,000 (Super Tier)</small>
                         </div>
                     </div>
                     <div class="form-group">
@@ -344,24 +344,24 @@
                     <div class="form-group">
                         <label for="loanTier">Tier</label>
                         <select id="loanTier">
-                            <option value="basic">Basic (≤₵1,500)</option>
-                            <option value="premium">Premium (≤₵5,000)</option>
-                            <option value="super" selected>Super (≤₵20,000)</option>
+                            <option value="basic">Basic (≤KSH1,500)</option>
+                            <option value="premium">Premium (≤KSH5,000)</option>
+                            <option value="super" selected>Super (≤KSH20,000)</option>
                         </select>
                     </div>
                 </div>
                 <div class="calculator-results">
                     <div class="result-card">
                         <h4>Total Repayment</h4>
-                        <div class="result-amount" id="totalRepayment">₵1,150</div>
+                        <div class="result-amount" id="totalRepayment">KSH1,150</div>
                     </div>
                     <div class="result-card">
                         <h4>Interest (15%)</h4>
-                        <div class="result-amount" id="interestAmount">₵150</div>
+                        <div class="result-amount" id="interestAmount">KSH150</div>
                     </div>
                     <div class="result-card">
                         <h4>Daily Payment</h4>
-                        <div class="result-amount" id="dailyPayment">₵164.29</div>
+                        <div class="result-amount" id="dailyPayment">KSH164.29</div>
                     </div>
                     <div class="result-card warning">
                         <h4>Daily Penalty (After 7 days)</h4>
@@ -381,10 +381,10 @@
                     <div class="story-content">
                         <h3>Mama Jimmy</h3>
                         <p class="story-location">Nairobi, Kenya</p>
-                        <p>"My gas ran out while cooking. I borrowed ₵1,200 and repaid in 7 days with 15% interest. Pesewa saved our family dinner!"</p>
+                        <p>"My gas ran out while cooking. I borrowed KSHS1,200 and repaid in 7 days with 15% interest. Pesewa saved our family dinner!"</p>
                         <div class="story-meta">
                             <span class="category">PesewaCookingGas</span>
-                            <span class="amount">₵1,200</span>
+                            <span class="amount">KSHS1,200</span>
                         </div>
                     </div>
                 </div>
@@ -392,10 +392,10 @@
                     <div class="story-content">
                         <h3>John Kimani</h3>
                         <p class="story-location">Kampala, Uganda</p>
-                        <p>"Stranded at home with no transport to a job interview. Borrowed ₵250, got the job, and repaid in 7 days. Life-changing!"</p>
+                        <p>"Stranded at home with no transport to a job interview. Borrowed KSH250, got the job, and repaid in 7 days. Life-changing!"</p>
                         <div class="story-meta">
                             <span class="category">PesewaFare</span>
-                            <span class="amount">₵250</span>
+                            <span class="amount">KSH250</span>
                         </div>
                     </div>
                 </div>
@@ -403,10 +403,10 @@
                     <div class="story-content">
                         <h3>Pastor Ndungu</h3>
                         <p class="story-location">Dar es Salaam, Tanzania</p>
-                        <p>"Running an online gig when data ran out. Borrowed ₵1,000 for data, completed my work, repaid on time. Essential support!"</p>
+                        <p>"Running an online gig when data ran out. Borrowed KSH1,000 for data, completed my work, repaid on time. Essential support!"</p>
                         <div class="story-meta">
-                            <span class="category">PesewaData</span>
-                            <span class="amount">₵1,000</span>
+                            <span class="category">PesewaData/Wifi</span>
+                            <span class="amount">KSH1,000</span>
                         </div>
                     </div>
                 </div>
@@ -462,7 +462,7 @@
                 </a>
                 <a href="pages/countries/congo.html" class="country-card">
                     <span class="flag">🇨🇩</span>
-                    <span class="country-name">Congo</span>
+                    <span class="country-name">DRCcongo</span>
                     <span class="currency">CDF</span>
                 </a>
                 <a href="pages/countries/nigeria.html" class="country-card">
