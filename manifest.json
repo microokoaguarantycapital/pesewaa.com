@@ -1,0 +1,56 @@
+{
+  "name": "Pesewa.com",
+  "short_name": "Pesewa",
+  "description": "Emergency Micro-Lending in Trusted Circles. Borrow for urgent needs from people you know. Lend to your community and earn 15% weekly interest.",
+  "theme_color": "#0A65FC",
+  "background_color": "#061257",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "assets/images/logo.svg",
+      "sizes": "72x72 96x96 128x128 144x144 152x152 192x192 384x384 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["finance", "social", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "assets/images/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "assets/images/screenshot2.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Borrow Now",
+      "short_name": "Borrow",
+      "description": "Request an emergency loan",
+      "url": "/pages/borrowing.html"
+    },
+    {
+      "name": "Lend & Earn",
+      "short_name": "Lend",
+      "description": "Lend to your community",
+      "url": "/pages/lending.html"
+    },
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "View your dashboard",
+      "url": "/pages/dashboard/lender-dashboard.html"
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": []
+}
