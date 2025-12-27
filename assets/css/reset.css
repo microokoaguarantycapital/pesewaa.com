@@ -1,0 +1,119 @@
+/* CSS Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    height: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    height: 100%;
+    position: relative;
+}
+
+#app {
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+img, svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Remove outline for non-keyboard navigation */
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+
+/* Selection */
+::selection {
+    background-color: rgba(123, 44, 191, 0.3);
+    color: #fff;
+}
+
+/* Utility classes for JavaScript */
+.hidden {
+    display: none !important;
+}
+
+.invisible {
+    visibility: hidden !important;
+}
+
+.visible {
+    visibility: visible !important;
+}
+
+/* Screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus styles for accessibility */
+.focus-visible {
+    outline: 2px solid #7B2CBF;
+    outline-offset: 2px;
+}

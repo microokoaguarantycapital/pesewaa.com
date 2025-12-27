@@ -1,0 +1,219 @@
+<!-- Home Page - Equivalent to Uber's m.uber.com/go/home -->
+<div class="home-page">
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <div class="welcome-content">
+            <h2 class="welcome-title">Find Your Perfect Companion</h2>
+            <p class="welcome-subtitle">Premium on-demand escort booking service</p>
+        </div>
+    </section>
+
+    <!-- Location Selector (Uber's "Pickup" Equivalent) -->
+    <section class="location-section">
+        <div class="section-header">
+            <h3 class="section-title">Where are you located?</h3>
+            <p class="section-subtitle">We'll show you escorts available near you</p>
+        </div>
+
+        <div class="location-options">
+            <!-- Use Current Location -->
+            <div class="location-option current-location" id="use-current-location">
+                <div class="option-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0 0 13 3.06V1h-2v2.06A8.994 8.994 0 0 0 3.06 11H1v2h2.06A8.994 8.994 0 0 0 11 20.94V23h2v-2.06A8.994 8.994 0 0 0 20.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+                    </svg>
+                </div>
+                <div class="option-content">
+                    <h4 class="option-title">Use Current Location</h4>
+                    <p class="option-desc">Detect your location automatically</p>
+                </div>
+                <div class="option-action">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Enter Location -->
+            <div class="location-option enter-location" id="enter-location">
+                <div class="option-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </div>
+                <div class="option-content">
+                    <h4 class="option-title">Enter Location</h4>
+                    <p class="option-desc">Hotel, apartment, or residence</p>
+                </div>
+                <div class="option-action">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location Search Box (Hidden by default) -->
+        <div class="location-search hidden" id="location-search">
+            <div class="search-header">
+                <button class="back-btn" id="back-from-search">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                    </svg>
+                </button>
+                <h4>Enter Your Location</h4>
+            </div>
+            <div class="search-input-container">
+                <input type="text" 
+                       id="location-search-input" 
+                       class="search-input" 
+                       placeholder="Search for area, street, or hotel..."
+                       autocomplete="off">
+                <div class="search-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="search-results" id="search-results">
+                <!-- Search results will be populated here -->
+            </div>
+            <div class="recent-locations" id="recent-locations">
+                <h5>Recent Locations</h5>
+                <!-- Recent locations will be populated here -->
+            </div>
+        </div>
+
+        <!-- Selected Location Display -->
+        <div class="selected-location hidden" id="selected-location-display">
+            <div class="selected-location-content">
+                <svg viewBox="0 0 24 24" class="location-icon">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <div class="location-details">
+                    <h4 id="selected-location-name">Your Location</h4>
+                    <p id="selected-location-address">Loading...</p>
+                </div>
+                <button class="change-location-btn" id="change-location-btn">
+                    Change
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Intent (Uber's "Where to?" Equivalent) -->
+    <section class="service-intent-section">
+        <div class="section-header">
+            <h3 class="section-title">What are you looking for?</h3>
+            <p class="section-subtitle">Choose your preferred service type</p>
+        </div>
+
+        <div class="service-options">
+            <!-- Book Escort Now -->
+            <div class="service-option" data-service="book-now" id="book-now-option">
+                <div class="service-icon" style="background: linear-gradient(135deg, #B11226 0%, #DC2626 100%);">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </div>
+                <div class="service-content">
+                    <h4 class="service-title">Book Escort Now</h4>
+                    <p class="service-desc">Instant booking for immediate service</p>
+                </div>
+                <div class="service-action">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Schedule Escort Later -->
+            <div class="service-option" data-service="schedule-later" id="schedule-later-option">
+                <div class="service-icon" style="background: linear-gradient(135deg, #7B2CBF 0%, #9D4EDD 100%);">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="white" d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                    </svg>
+                </div>
+                <div class="service-content">
+                    <h4 class="service-title">Schedule Escort Later</h4>
+                    <p class="service-desc">Book an appointment for later</p>
+                </div>
+                <div class="service-action">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Browse Premium Escorts -->
+            <div class="service-option" data-service="premium" id="premium-option">
+                <div class="service-icon" style="background: linear-gradient(135deg, #D4AF37 0%, #FBBF24 100%);">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="white" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                </div>
+                <div class="service-content">
+                    <h4 class="service-title">Browse Premium Escorts</h4>
+                    <p class="service-desc">High-end companions with premium features</p>
+                </div>
+                <div class="service-action">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Subscription-Only Escorts -->
+            <div class="service-option" data-service="subscription" id="subscription-option">
+                <div class="service-icon" style="background: linear-gradient(135deg, #1DB954 0%, #34BB78 100%);">
+                    <svg viewBox="0 0 24 24">
+                        <path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </div>
+                <div class="service-content">
+                    <h4 class="service-title">Subscription-Only Escorts</h4>
+                    <p class="service-desc">Exclusive access to subscribed escorts</p>
+                </div>
+                <div class="service-action">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Continue Button -->
+    <div class="continue-section">
+        <button class="btn btn-primary btn-large btn-full" id="continue-btn" disabled>
+            Select Location to Continue
+        </button>
+        <p class="continue-note">
+            By continuing, you agree to our <a href="#/terms">Terms of Service</a> and <a href="#/privacy">Privacy Policy</a>
+        </p>
+    </div>
+
+    <!-- Featured Escorts (Optional) -->
+    <section class="featured-section hidden" id="featured-section">
+        <div class="section-header">
+            <h3 class="section-title">Featured Escorts</h3>
+            <p class="section-subtitle">Popular escorts in your area</p>
+        </div>
+        <div class="featured-container" id="featured-container">
+            <!-- Featured escorts will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Safety Notice -->
+    <section class="safety-section">
+        <div class="safety-content">
+            <svg viewBox="0 0 24 24" class="safety-icon">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+            </svg>
+            <div class="safety-text">
+                <h4>Your Safety is Our Priority</h4>
+                <p>All escorts are verified and reviewed. We prioritize your privacy and security.</p>
+            </div>
+        </div>
+    </section>
+</div>

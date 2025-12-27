@@ -1,0 +1,297 @@
+<!-- Escort Selection Page - Equivalent to Uber's m.uber.com/go/product-selection -->
+<div class="escort-selection-page">
+    <!-- Map Area (Top) -->
+    <div class="map-section">
+        <div class="map-header">
+            <button class="back-btn" id="back-to-home">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                </svg>
+            </button>
+            <h3 class="map-title">Available Escorts</h3>
+            <button class="filter-btn" id="filter-btn">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/>
+                </svg>
+                <span class="filter-count" id="filter-count">0</span>
+            </button>
+        </div>
+        
+        <!-- Interactive Map -->
+        <div id="escort-map" class="map-container"></div>
+        
+        <!-- Summary Bar -->
+        <div class="summary-bar" id="summary-bar">
+            <div class="summary-item">
+                <svg viewBox="0 0 24 24" class="summary-icon">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <div class="summary-text">
+                    <span class="summary-label">Your Location:</span>
+                    <span class="summary-value" id="current-location">Loading...</span>
+                </div>
+            </div>
+            
+            <div class="summary-divider"></div>
+            
+            <div class="summary-item">
+                <svg viewBox="0 0 24 24" class="summary-icon">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+                </svg>
+                <div class="summary-text">
+                    <span class="summary-label">Service Location:</span>
+                    <span class="summary-value" id="service-location">Your location</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Available Escorts List -->
+    <section class="escorts-section">
+        <div class="escorts-header">
+            <h3 class="escorts-title">
+                Available Escorts
+                <span class="escorts-count" id="escorts-count">0</span>
+            </h3>
+            
+            <div class="sort-controls">
+                <button class="sort-btn" id="sort-btn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/>
+                    </svg>
+                    Sort by: <span id="current-sort">Tier Priority</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Filter Tags -->
+        <div class="filter-tags" id="filter-tags">
+            <!-- Active filters will be displayed here -->
+        </div>
+        
+        <!-- Subscription Tier Filter -->
+        <div class="tier-filter">
+            <div class="tier-filter-header">
+                <h4>Subscription Tiers</h4>
+                <button class="clear-filters-btn" id="clear-filters-btn">
+                    Clear All
+                </button>
+            </div>
+            <div class="tier-buttons">
+                <button class="tier-btn basic" data-tier="basic">
+                    <span class="tier-dot" style="background: #9CA3AF;"></span>
+                    Basic
+                </button>
+                <button class="tier-btn gold" data-tier="gold">
+                    <span class="tier-dot" style="background: #D4AF37;"></span>
+                    Gold
+                </button>
+                <button class="tier-btn premium" data-tier="premium">
+                    <span class="tier-dot" style="background: #7B2CBF;"></span>
+                    Premium
+                </button>
+                <button class="tier-btn full" data-tier="full">
+                    <span class="tier-dot" style="background: #B11226;"></span>
+                    Full
+                </button>
+            </div>
+        </div>
+        
+        <!-- Escorts Container -->
+        <div class="escorts-container" id="escorts-container">
+            <!-- Escort cards will be rendered here -->
+            <div class="loading-escorts">
+                <div class="loading-spinner"></div>
+                <p>Loading available escorts...</p>
+            </div>
+        </div>
+        
+        <!-- No Results Message -->
+        <div class="no-results hidden" id="no-results">
+            <svg viewBox="0 0 24 24" class="no-results-icon">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+            </svg>
+            <h4>No escorts found</h4>
+            <p>Try adjusting your filters or location</p>
+            <button class="btn btn-secondary" id="reset-filters-btn">
+                Reset Filters
+            </button>
+        </div>
+    </section>
+
+    <!-- Filters Panel (Modal) -->
+    <div class="filters-panel hidden" id="filters-panel">
+        <div class="filters-header">
+            <h3>Filters</h3>
+            <button class="close-filters-btn" id="close-filters-btn">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="filters-content">
+            <!-- Category Filter -->
+            <div class="filter-group">
+                <h4 class="filter-title">Category</h4>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" name="category" value="straight">
+                        <span class="filter-checkbox"></span>
+                        <span class="filter-label">Straight</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="category" value="shemale">
+                        <span class="filter-checkbox"></span>
+                        <span class="filter-label">Shemale</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="category" value="gay">
+                        <span class="filter-checkbox"></span>
+                        <span class="filter-label">Gay</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="category" value="lesbian">
+                        <span class="filter-checkbox"></span>
+                        <span class="filter-label">Lesbian</span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Services Filter -->
+            <div class="filter-group">
+                <h4 class="filter-title">Services</h4>
+                <div class="filter-options services-options">
+                    <label class="filter-option">
+                        <input type="checkbox" name="services" value="Short Time">
+                        <span class="filter-checkbox"></span>
+                        <span class="filter-label">Short Time</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="services" value="Long Time">
+                        <span class="filter-checkbox"></span>
+                        <span class="filter-label">Long Time</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="services" value="Dinner Companion">
+                        <span class="filter-checkbox"></span>
+                        <span class="filter-label">Dinner Companion</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="services" value="Overnight">
+                        <span class="filter-checkbox"></span>
+                        <span class="filter-label">Overnight</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="services" value="Massage">
+                        <span class="filter-checkbox"></span>
+                        <span class="filter-label">Massage</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" name="services" value="Role Play">
+                        <span class="filter-checkbox"></span>
+                        <span class="filter-label">Role Play</span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Price Range -->
+            <div class="filter-group">
+                <h4 class="filter-title">Price Range (KES)</h4>
+                <div class="price-range">
+                    <div class="price-inputs">
+                        <input type="number" id="min-price" placeholder="250" min="250" max="10000">
+                        <span class="price-separator">to</span>
+                        <input type="number" id="max-price" placeholder="10000" min="250" max="10000">
+                    </div>
+                    <div class="price-slider">
+                        <input type="range" id="price-slider-min" min="250" max="10000" value="250" step="250">
+                        <input type="range" id="price-slider-max" min="250" max="10000" value="10000" step="250">
+                    </div>
+                    <div class="price-labels">
+                        <span>KES 250</span>
+                        <span>KES 10,000</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Availability -->
+            <div class="filter-group">
+                <h4 class="filter-title">Availability</h4>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="radio" name="availability" value="all" checked>
+                        <span class="filter-radio"></span>
+                        <span class="filter-label">All Escorts</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="radio" name="availability" value="online">
+                        <span class="filter-radio"></span>
+                        <span class="filter-label">Online Now</span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Distance -->
+            <div class="filter-group">
+                <h4 class="filter-title">Maximum Distance</h4>
+                <div class="distance-filter">
+                    <input type="range" id="distance-slider" min="1" max="50" value="10" step="1">
+                    <div class="distance-value">
+                        <span id="distance-value">10 km</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="filters-footer">
+            <button class="btn btn-secondary" id="cancel-filters-btn">
+                Cancel
+            </button>
+            <button class="btn btn-primary" id="apply-filters-btn">
+                Apply Filters
+            </button>
+        </div>
+    </div>
+
+    <!-- Sort Options Panel -->
+    <div class="sort-panel hidden" id="sort-panel">
+        <div class="sort-options">
+            <label class="sort-option">
+                <input type="radio" name="sort" value="tier-priority" checked>
+                <span class="sort-radio"></span>
+                <span class="sort-label">Tier Priority</span>
+            </label>
+            <label class="sort-option">
+                <input type="radio" name="sort" value="distance">
+                <span class="sort-radio"></span>
+                <span class="sort-label">Distance (Nearest)</span>
+            </label>
+            <label class="sort-option">
+                <input type="radio" name="sort" value="price-low-high">
+                <span class="sort-radio"></span>
+                <span class="sort-label">Price (Low to High)</span>
+            </label>
+            <label class="sort-option">
+                <input type="radio" name="sort" value="price-high-low">
+                <span class="sort-radio"></span>
+                <span class="sort-label">Price (High to Low)</span>
+            </label>
+            <label class="sort-option">
+                <input type="radio" name="sort" value="rating">
+                <span class="sort-radio"></span>
+                <span class="sort-label">Highest Rated</span>
+            </label>
+        </div>
+        <button class="btn btn-primary btn-full" id="apply-sort-btn">
+            Apply Sort
+        </button>
+    </div>
+
+    <!-- Escort Details Modal -->
+    <div class="escort-modal hidden" id="escort-modal">
+        <div class="modal-content">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </div>
+</div>
