@@ -1,0 +1,12 @@
+
+:root {
+--bg:#0B0B0B;
+--card:#141414;
+--text:#F5F5F5;
+--muted:#9CA3AF;
+--gold:#D4AF37;
+--premium:#7B2CBF;
+--full:#B11226;
+--online:#1DB954;
+}
+body { background:var(--bg); color:var(--text); }
